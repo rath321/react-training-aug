@@ -95,11 +95,32 @@
 //     );
 // }
 
-const HelloComponent = () => (
-    <>
-        <h1>Hello World!</h1>
-        <h1>Hello World - Singleline Arrow Fn !</h1>
-    </>
-);
+// const HelloComponent = () => (
+//     <>
+//         <h1>Hello World!</h1>
+//         <h1>Hello World - Singleline Arrow Fn !</h1>
+//     </>
+// );
 
-export default HelloComponent;
+// export default HelloComponent;
+
+// export const HelloComponent = () => (
+//     <>
+//         <h1>Hello World!</h1>
+//         <h1>Hello World - Singleline Arrow Fn !</h1>
+//     </>
+// );
+
+// --------------------------------------- Using Global CSS
+
+export const HelloComponent = () => (
+    <div className="container-fluid">
+        <h1 className="red">Hello World!</h1>
+        <h1 className="text-primary">Hello World - Singleline Arrow Fn !</h1>
+        <h1 className="text-success">
+            Activity Icon
+            <span className="bi bi-activity"></span>
+            <span className="bi bi-arrow-up-square-fill"></span>
+        </h1>
+    </div>
+);
