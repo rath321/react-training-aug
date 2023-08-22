@@ -16,6 +16,8 @@ import ComponentWithState from '../6_comp-state/ComponentWithState';
 import ComponentWithProps from '../7_comp-props/ComponentWithProps';
 import PropTypesRoot from '../8_prop-types/PropTypesComponent';
 import ComponentWithBehaviour from '../9_comp-methods/ComponentWithBehaviour';
+import EventComponent from '../10_synthetic-events/EventComponent';
+import CounterAssignment from '../11_assignment/CounterAssignment';
 
 const data = {
     id: 1,
@@ -41,7 +43,10 @@ const RootComponent = () => {
                 display={data.display} /> */}
 
             {/* <PropTypesRoot /> */}
-            <ComponentWithBehaviour />
+            {/* <ComponentWithBehaviour /> */}
+            {/* <EventComponent /> */}
+
+            <CounterAssignment />
         </div>
     );
 };
