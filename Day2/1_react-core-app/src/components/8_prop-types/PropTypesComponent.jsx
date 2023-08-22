@@ -69,7 +69,13 @@ PropTypesComponent.propTypes = {
         if (props[propName] < 20) {
             throw new Error("Age must be greater than 20 in - " + componentName);
         }
-    }
+    },
+    products: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired
+    })).isRequired
 }
 
 class PropTypesRoot extends Component {
@@ -82,7 +88,7 @@ class PropTypesRoot extends Component {
                 <hr />
                 <PropTypesComponent name={"manish"} age={"20"} />
                 <hr /> */}
-                <PropTypesComponent name={"manish"} age={10} />
+                <PropTypesComponent name={"manish"} age={20} products={[{id:1, name:"Item One", description:"Widget", price:20}]}/>
             </>
         );
     }
