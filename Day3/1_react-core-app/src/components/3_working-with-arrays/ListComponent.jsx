@@ -109,7 +109,7 @@ class ListRoot extends Component {
                     <h4 className='text-info'>Posts Table</h4>
                 </TableComponent> */}
 
-                <DataTable items={this.state.employees}>
+                {/* <DataTable items={this.state.employees}>
                     <h4 className='text-info'>Employees Table</h4>
                 </DataTable>
 
@@ -117,7 +117,12 @@ class ListRoot extends Component {
 
                 <DataTable items={this.state.posts}>
                     <h4 className='text-info'>Employees Table</h4>
+                </DataTable> */}
+
+                <DataTable>
+                    <h4 className='text-info'>Employees Table</h4>
                 </DataTable>
+
             </div>
         );
     }

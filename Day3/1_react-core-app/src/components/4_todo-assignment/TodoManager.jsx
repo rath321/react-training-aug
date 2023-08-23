@@ -40,8 +40,6 @@ class Add2Todo extends Component {
     }
 }
 
-
-
 class TodoManager extends Component {
     constructor(props) {
         super(props);
@@ -55,7 +53,8 @@ class TodoManager extends Component {
     }
 
     addTodo(toDoText) {
-        this.setState({ todos: [...this.state.todos, { id: this.state.todos.length + 1, description: toDoText }] });
+        throw new Error("Method not implemented.");
+        // this.setState({ todos: [...this.state.todos, { id: this.state.todos.length + 1, description: toDoText }] });
     }
 
     render() {
