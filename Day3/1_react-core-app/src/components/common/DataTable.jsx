@@ -33,13 +33,13 @@ const Tr = ({ item }) => {
 }
 
 const DataTable = ({ items, children }) => {
-    // if (items && items.length) {
+    if (items && items.length) {
         var [item] = items;
         var headers = <Th item={item} />;
         var trs = items.map((item, index) => {
             return <Tr item={item} key={item.id} />
         });
-    // }
+    }
     return (
         <table className='table table-striped'>
             <thead>
