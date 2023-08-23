@@ -8,6 +8,7 @@ import WithoutContext from '../5_context-api/WithoutContext';
 import WithContext from '../5_context-api/WithContext';
 import MultiContext from '../5_context-api/MultiContext';
 import SiblingCommunication from '../6_communication-using-context/SiblingCommunication';
+import TodoManagerContext from '../7_todo-assignment-context/TodoManager';
 // import ControlledVsUncontrolled from '../1_controlled-vs-uncontrolled/ControlledVsUncontrolled';
 
 const RootComponent = () => {
@@ -21,7 +22,8 @@ const RootComponent = () => {
                 {/* <WithoutContext /> */}
                 {/* <WithContext /> */}
                 {/* <MultiContext /> */}
-                <SiblingCommunication />
+                {/* <SiblingCommunication /> */}
+                <TodoManagerContext />
             </ErrorHandler>
         </div>
     );
