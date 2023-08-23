@@ -47,8 +47,8 @@ const RootComponent = () => {
             {/* <ComponentWithBehaviour /> */}
             {/* <EventComponent /> */}
 
-            <CounterAssignment />
-            {/* <QuestionComponent /> */}
+            {/* <CounterAssignment /> */}
+            <QuestionComponent />
         </div>
     );
 };
