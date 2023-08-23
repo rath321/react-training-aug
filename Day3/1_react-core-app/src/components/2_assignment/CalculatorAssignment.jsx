@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TextInput from '../common/TextInput';
 
 class CalculatorOne extends Component {
     constructor(props) {
@@ -62,13 +63,13 @@ class CalculatorTwo extends Component {
     }
 
     handleChange1(e) {
-        var obj = {...this.state.data};
+        var obj = { ...this.state.data };
         obj.t1 = e.target.value;
         this.setState({ data: obj });
     }
 
     handleChange2(e) {
-        var obj = {...this.state.data};
+        var obj = { ...this.state.data };
         obj.t2 = e.target.value;
         this.setState({ data: obj });
     }
@@ -125,7 +126,7 @@ class CalculatorThree extends Component {
 
     handleChange(e) {
         const field = e.target.id;
-        var obj = {...this.state.data};
+        var obj = { ...this.state.data };
         obj[field] = parseInt(e.target.value);
         this.setState({ data: obj });
     }
@@ -145,7 +146,7 @@ class CalculatorThree extends Component {
                 <div className="col-sm-6 offset-sm-3">
                     <form className="justify-content-center">
                         <fieldset>
-                            <legend className="text-center">Calculator Two - Controlled - Single Change Handler</legend>
+                            <legend className="text-center">Calculator Three - Controlled - Single Change Handler</legend>
                             <div className="form-group mb-1">
                                 <label className="mb-0" htmlFor="t1">Number One</label>
                                 <input type="text" className="form-control" id="t1" value={this.state.data.t1}
@@ -171,12 +172,67 @@ class CalculatorThree extends Component {
     }
 }
 
+class CalculatorFour extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { data: { t1: 0, t2: 0 }, result: 0 };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.reset = this.reset.bind(this);
+    }
+
+    handleChange(e) {
+        const field = e.target.id;
+        var obj = { ...this.state.data };
+        obj[field] = parseInt(e.target.value);
+        this.setState({ data: obj });
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        this.setState({ result: this.state.data.t1 + this.state.data.t2 });
+    }
+
+    reset(e) {
+        this.setState({ data: { t1: 0, t2: 0 }, result: 0 });
+    }
+
+    render() {
+        return (
+            <div className="row">
+                <div className="col-sm-6 offset-sm-3">
+                    <form className="justify-content-center">
+                        <fieldset>
+                            <legend className="text-center">Calculator Four - Composite UI</legend>
+                            
+                            <TextInput name="t1" label="Number One" placeholder="Enter Number One"
+                                value={this.state.data.t1} onChange={this.handleChange} />
+                            
+                            <TextInput name="t2" label="Number Two" placeholder="Enter Number Two"
+                                value={this.state.data.t2} onChange={this.handleChange} />
+                            
+                            <div className="form-group mb-2 mt-2">
+                                <h3>Result: {this.state.result}</h3>
+                            </div>
+                            <div className="d-grid gap-2 mx-auto">
+                                <button type="submit" className="btn btn-success" onClick={this.handleSubmit}>Add</button>
+                                <button type="reset" className="btn btn-primary" onClick={this.reset}>Reset</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        );
+    }
+}
+
 const CalculatorAssignment = () => {
     return (
         <div>
             {/* <CalculatorOne /> */}
             {/* <CalculatorTwo /> */}
-            <CalculatorThree />
+            {/* <CalculatorThree /> */}
+            <CalculatorFour />
         </div>
     );
 };
