@@ -12,7 +12,16 @@ const AdminComponent = () => {
         }).catch(eMsg => {
             setState({ message: eMsg });
         });
-    });
+
+        // (async () => {
+        //     try {
+        //         const data = await productApiClient.getAllProducts();
+        //         setState({ products: [...data], message: "" });
+        //     } catch (eMsg) {
+        //         setState({ message: eMsg });
+        //     }
+        // })();
+    }, []);
 
     return (
         <div className="text-center">

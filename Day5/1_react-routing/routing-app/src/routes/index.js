@@ -1,12 +1,26 @@
+import React, { lazy, Suspense } from "react";
 import { Routes, Route, useLocation, Link, Navigate } from "react-router-dom";
-import HomeComponent from "../components/home/HomeComponent";
-import AboutComponent from "../components/about/AboutComponent";
-import ProductsComponent from "../components/products/ProductsComponent";
-import ProductNotSelectedComponent from "../components/products/ProductNotSelectedComponent";
-import ProductDetailsComponent from "../components/products/ProductDetailsComponent";
-import AdminComponent from "../components/admin/AdminComponent";
+
 import authenticatorClient from "../services/authenticator-api-client";
-import LoginComponent from "../components/login/LoginComponent";
+import LoaderAnimation from '../components/common/LoaderAnimation';
+
+// Eager Loading
+// import HomeComponent from "../components/home/HomeComponent";
+// import AboutComponent from "../components/about/AboutComponent";
+// import ProductsComponent from "../components/products/ProductsComponent";
+// import ProductNotSelectedComponent from "../components/products/ProductNotSelectedComponent";
+// import ProductDetailsComponent from "../components/products/ProductDetailsComponent";
+// import AdminComponent from "../components/admin/AdminComponent";
+// import LoginComponent from "../components/login/LoginComponent";
+
+// Lazy Loading
+const HomeComponent = lazy(() => import("../components/home/HomeComponent"));
+const AboutComponent = lazy(() => import("../components/about/AboutComponent"));
+const ProductsComponent = lazy(() => import("../components/products/ProductsComponent"));
+const ProductNotSelectedComponent = lazy(() => import("../components/products/ProductNotSelectedComponent"));
+const ProductDetailsComponent = lazy(() => import("../components/products/ProductDetailsComponent"));
+const AdminComponent = lazy(() => import("../components/admin/AdminComponent"));
+const LoginComponent = lazy(() => import("../components/login/LoginComponent"));
 
 const productsData = [
     {
@@ -47,21 +61,23 @@ const SecuredRoute = ({ children }) => {
 }
 
 export default (
-    <Routes>
-        <Route path="/" element={<HomeComponent />} />
-        <Route path="/about" element={<AboutComponent />} />
-        <Route path="/products" element={<ProductsComponent productsData={productsData} />}>
-            <Route path="" element={<ProductNotSelectedComponent />} />
-            <Route path=":productId" element={<ProductDetailsComponent data={productsData} />} />
-        </Route>
-        <Route path="/admin" element={
-            <SecuredRoute>
-                <AdminComponent />
-            </SecuredRoute>
-        } />
-        <Route path="/login" element={<LoginComponent />} />
-        <Route path="*" element={<NoMatch />} />
-    </Routes>
+    <Suspense fallback={<LoaderAnimation />}>
+        <Routes>
+            <Route path="/" element={<HomeComponent />} />
+            <Route path="/about" element={<AboutComponent />} />
+            <Route path="/products" element={<ProductsComponent productsData={productsData} />}>
+                <Route path="" element={<ProductNotSelectedComponent />} />
+                <Route path=":productId" element={<ProductDetailsComponent data={productsData} />} />
+            </Route>
+            <Route path="/admin" element={
+                <SecuredRoute>
+                    <AdminComponent />
+                </SecuredRoute>
+            } />
+            <Route path="/login" element={<LoginComponent />} />
+            <Route path="*" element={<NoMatch />} />
+        </Routes>
+    </Suspense>
 );
 
 const img404 = require('../assets/http-404.jpg');
