@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { Routes, Route, useLocation, Link } from "react-router-dom";
 
 import LoaderAnimation from '../components/common/LoaderAnimation';
+import CounterComponent from "../components/counter/CounterComponent";
 
 const HomeComponent = lazy(() => import("../components/home/HomeComponent"));
 const AboutComponent = lazy(() => import("../components/about/AboutComponent"));
@@ -11,6 +12,7 @@ export default (
         <Routes>
             <Route path="/" element={<HomeComponent />} />
             <Route path="/about" element={<AboutComponent />} />
+            <Route path="/counter" element={<CounterComponent />} />
             <Route path="*" element={<NoMatch />} />
         </Routes>
     </Suspense>

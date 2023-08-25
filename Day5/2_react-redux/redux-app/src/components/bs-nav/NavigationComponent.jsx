@@ -35,6 +35,12 @@ const NavigationComponent = () => {
                                     <span>About</span>
                                 </NavLink>
                             </li>
+                            <li className="nav-item px-3">
+                                <NavLink className="nav-link d-flex flex-column align-items-center" to="/counter">
+                                    <i className="bi bi-1-circle-fill"></i>
+                                    <span>Counter</span>
+                                </NavLink>
+                            </li>
                         </ul>
                     </div>
                 </div>
