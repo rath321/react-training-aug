@@ -4,6 +4,7 @@ import AboutComponent from "../components/about/AboutComponent";
 import ProductsComponent from "../components/products/ProductsComponent";
 import ProductNotSelectedComponent from "../components/products/ProductNotSelectedComponent";
 import ProductDetailsComponent from "../components/products/ProductDetailsComponent";
+import AdminComponent from "../components/admin/AdminComponent";
 
 const productsData = [
     {
@@ -41,6 +42,7 @@ export default (
             <Route path="" element={<ProductNotSelectedComponent />} />
             <Route path=":productId" element={<ProductDetailsComponent data={productsData} />} />
         </Route>
+        <Route path="*" element={<AdminComponent />} />
         <Route path="*" element={<NoMatch />} />
     </Routes>
 );
