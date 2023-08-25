@@ -1,10 +1,12 @@
-import { Routes, Route, useLocation, Link } from "react-router-dom";
+import { Routes, Route, useLocation, Link, Navigate } from "react-router-dom";
 import HomeComponent from "../components/home/HomeComponent";
 import AboutComponent from "../components/about/AboutComponent";
 import ProductsComponent from "../components/products/ProductsComponent";
 import ProductNotSelectedComponent from "../components/products/ProductNotSelectedComponent";
 import ProductDetailsComponent from "../components/products/ProductDetailsComponent";
 import AdminComponent from "../components/admin/AdminComponent";
+import authenticatorClient from "../services/authenticator-api-client";
+import LoginComponent from "../components/login/LoginComponent";
 
 const productsData = [
     {
@@ -34,6 +36,16 @@ const productsData = [
     }
 ];
 
+const SecuredRoute = ({ children }) => {
+    let location = useLocation();
+
+    if (authenticatorClient.isAuthenticated) {
+        return children;
+    } else {
+        return <Navigate to='/login' state={{ from: location }} />
+    }
+}
+
 export default (
     <Routes>
         <Route path="/" element={<HomeComponent />} />
@@ -42,7 +54,12 @@ export default (
             <Route path="" element={<ProductNotSelectedComponent />} />
             <Route path=":productId" element={<ProductDetailsComponent data={productsData} />} />
         </Route>
-        <Route path="*" element={<AdminComponent />} />
+        <Route path="/admin" element={
+            <SecuredRoute>
+                <AdminComponent />
+            </SecuredRoute>
+        } />
+        <Route path="/login" element={<LoginComponent />} />
         <Route path="*" element={<NoMatch />} />
     </Routes>
 );

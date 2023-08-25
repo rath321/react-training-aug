@@ -5,11 +5,12 @@ import fetchIntercept from 'fetch-intercept';
 
 import ErrorHandler from '../common/ErrorHandler';
 import NavigationComponent from '../bs-nav/NavigationComponent';
+import authenticatorClient from '../../services/authenticator-api-client';
 
 const unregister = fetchIntercept.register({
     request: function (url, config) {
         // Modify the url or config here
-        config.headers['x-access-token'] = "ajkhdjkahdkjh";
+        config.headers['x-access-token'] = authenticatorClient.getToken();
         return [url, config];
     },
 
